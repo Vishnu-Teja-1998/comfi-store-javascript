@@ -30,7 +30,23 @@ let productID;
 // show product when page loads
 window.addEventListener("DOMContentLoaded", async function () {
     const urlID = window.location.search;
-    const responce = await fetch(`${singleProductUrl}${urlID}`)
-    console.log(responce);
+    try {
+        const responce = await fetch(`${singleProductUrl}${urlID}`)
+        if (responce.status >= 200 && responce.status <= 299) {
+            const product = await responce.json()
+            console.log(product)
+        } else {
+            console.log(responce.status, responce.statusTest)
+            centerDOM.innerHTML = `
+            <div>
+            <h3 class="error">sorry, somthing went wrong</h3>
+            <a href="index.html" class="btn">back home</a>
+            </div>
+            `
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
     loading.style.display = "none"
 })

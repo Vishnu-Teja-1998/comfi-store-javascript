@@ -17,6 +17,8 @@ const init = async () => {
     const products = await fetchProducts();
     if (products) {
         setupStore(products);
+        const featured = store.filter((product) => product.featured === true)
+        console.log(featured);
     }
 };
 

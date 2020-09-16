@@ -17,7 +17,6 @@ const init = async () => {
     const products = await fetchProducts();
     if (products) {
         setupStore(products);
-        console.log(store);
     }
 };
 

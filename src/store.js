@@ -12,6 +12,7 @@ const setupStore = (products) => {
                 price,
                 company,
                 colors,
+                name,
                 image: img
             }
         } = product;
@@ -22,7 +23,8 @@ const setupStore = (products) => {
             price,
             company,
             colors,
-            image
+            image,
+            name
         }
 
     })

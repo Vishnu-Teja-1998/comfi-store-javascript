@@ -5,9 +5,16 @@ import {
   formatPrice,
   getElement,
 } from '../utils.js';
-import { openCart } from './toggleCart.js';
-import { findProduct } from '../store.js';
+import {
+  openCart
+} from './toggleCart.js';
+import {
+  findProduct
+} from '../store.js';
 import addToCartDOM from './addToCartDOM.js';
 // set items
 
-export const addToCart = () => {};
+export const addToCart = (id) => {
+  console.log(id);
+  openCart()
+};

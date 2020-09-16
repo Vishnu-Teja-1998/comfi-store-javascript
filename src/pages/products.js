@@ -20,5 +20,6 @@ import {
 const loading = getElement(".page-loading")
 
 display(store, getElement(".products-container"))
+setupSearch(store)
 
 loading.style.display = "none"

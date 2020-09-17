@@ -34,7 +34,37 @@ window.addEventListener("DOMContentLoaded", async function () {
         const responce = await fetch(`${singleProductUrl}${urlID}`)
         if (responce.status >= 200 && responce.status <= 299) {
             const product = await responce.json()
-            console.log(product)
+            // grab data 
+            const {
+                id,
+                fields
+            } = product;
+            productID = id;
+
+            const {
+                name,
+                company,
+                price,
+                colors,
+                description
+            } = fields;
+            const image = fields.image[0].thumbnails.large.url;
+            // set values
+            document.title = `${name.toUpperCase()} | Comfy`;
+            pageTitleDOM.textContent = `Home / ${name}`;
+            imgDOM.src = image;
+            titleDOM.textContent = name;
+            companyDOM.textContent = `by ${company}`;
+            priceDOM.textContent = formatPrice(price);
+            descDOM.textContent = description;
+            colors.forEach((color) => {
+                const span = document.createElement("span");
+                span.classList.add("product-color");
+                span.style.backgroundColor = `${color}`;
+                colorsDOM.appendChild(span);
+            })
+
+            console.log(` The image is : ${image}`)
         } else {
             console.log(responce.status, responce.statusTest)
             centerDOM.innerHTML = `
@@ -50,3 +80,7 @@ window.addEventListener("DOMContentLoaded", async function () {
 
     loading.style.display = "none"
 })
+
+cartBtn.addEventListener('click', function () {
+    addToCart(productID);
+});

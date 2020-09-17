@@ -3,11 +3,11 @@ import {
 } from './utils.js';
 
 const fetchProducts = async () => {
-    const responce = await fetch(allProductsUrl).catch(err => console.log(err));
-    if (responce) {
-        return responce.json();
+    const response = await fetch(allProductsUrl).catch((err) => console.log(err));
+    if (response) {
+        return response.json();
     }
-    return responce;
+    return response;
 };
 
 export default fetchProducts;

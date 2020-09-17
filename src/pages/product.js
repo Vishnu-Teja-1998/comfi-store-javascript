@@ -28,13 +28,14 @@ const cartBtn = getElement('.addToCartBtn');
 let productID;
 
 // show product when page loads
-window.addEventListener("DOMContentLoaded", async function () {
+window.addEventListener('DOMContentLoaded', async function () {
     const urlID = window.location.search;
+
     try {
-        const responce = await fetch(`${singleProductUrl}${urlID}`)
-        if (responce.status >= 200 && responce.status <= 299) {
-            const product = await responce.json()
-            // grab data 
+        const response = await fetch(`${singleProductUrl}${urlID}`);
+        if (response.status >= 200 && response.status <= 299) {
+            const product = await response.json();
+            // grab data
             const {
                 id,
                 fields
@@ -50,6 +51,7 @@ window.addEventListener("DOMContentLoaded", async function () {
             } = fields;
             const image = fields.image[0].thumbnails.large.url;
             // set values
+
             document.title = `${name.toUpperCase()} | Comfy`;
             pageTitleDOM.textContent = `Home / ${name}`;
             imgDOM.src = image;
@@ -58,28 +60,26 @@ window.addEventListener("DOMContentLoaded", async function () {
             priceDOM.textContent = formatPrice(price);
             descDOM.textContent = description;
             colors.forEach((color) => {
-                const span = document.createElement("span");
-                span.classList.add("product-color");
+                const span = document.createElement('span');
+                span.classList.add('product-color');
                 span.style.backgroundColor = `${color}`;
                 colorsDOM.appendChild(span);
-            })
-
-            console.log(` The image is : ${image}`)
+            });
         } else {
-            console.log(responce.status, responce.statusTest)
+            console.log(response.status, response.statusText);
             centerDOM.innerHTML = `
-            <div>
-            <h3 class="error">sorry, somthing went wrong</h3>
-            <a href="index.html" class="btn">back home</a>
-            </div>
-            `
+    <div>
+    <h3 class="error">sorry, something went wrong</h3>
+    <a href="index.html" class="btn">back home</a>
+    </div> 
+     `;
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 
-    loading.style.display = "none"
-})
+    loading.style.display = 'none';
+});
 
 cartBtn.addEventListener('click', function () {
     addToCart(productID);

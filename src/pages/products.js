@@ -17,10 +17,11 @@ import {
     getElement
 } from '../utils.js';
 
-const loading = getElement(".page-loading")
+const loading = getElement('.page-loading');
 
-display(store, getElement(".products-container"))
-setupSearch(store)
-setupCompanies(store)
-setupPrice(store)
-loading.style.display = "none"
+display(store, getElement('.products-container'));
+
+setupSearch(store);
+setupCompanies(store);
+setupPrice(store);
+loading.style.display = 'none';

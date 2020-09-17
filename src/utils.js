@@ -1,7 +1,7 @@
 const allProductsUrl =
   'https://course-api.netlify.app/api/javascript-store-products';
-// temporary single product
-// 'https://course-api.netlify.app/api/javascript-store-single-product?id=rec43w3ipXvP28vog'
+// temp single product
+// https://course-api.netlify.app/api/javascript-store-single-product?id=recmg2a1ctaEJNZhu
 const singleProductUrl =
   'https://course-api.netlify.app/api/javascript-store-single-product';
 
@@ -14,24 +14,25 @@ const getElement = (selection) => {
 };
 
 const formatPrice = (price) => {
-  let formattedPrice = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD"
-  }).format((price / 100).toFixed(2))
+  let formattedPrice = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format((price / 100).toFixed(2));
   return formattedPrice;
 };
 
 const getStorageItem = (item) => {
-  let storageItem = localStorage.getItem(item)
-  if (item) {
-    storageItem = JSON.parse(localStorage.getItem(item))
+  let storageItem = localStorage.getItem(item);
+  if (storageItem) {
+    storageItem = JSON.parse(localStorage.getItem(item));
   } else {
-    storageItem = []
+    storageItem = [];
   }
-  return storageItem
+  return storageItem;
 };
+
 const setStorageItem = (name, item) => {
-  localStorage.setItem(name, JSON.stringify(item))
+  localStorage.setItem(name, JSON.stringify(item));
 };
 
 export {
